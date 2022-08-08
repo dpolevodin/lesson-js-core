@@ -1,3 +1,42 @@
+:root {
+    --main-background-color: #459DF5;
+    --secondary-background-color: #88b288;
+}
+
 .wrapper {
     background-color: gray;
+}
+
+.house {
+    width: 20rem;
+    height: 20rem;
+    border-radius: 2rem;
+}
+
+.button_primary {
+    background-color: var(--main-background-color);
+}
+
+.house_red {
+    background-color: var(--secondary-background-color);
+}
+
+.button {
+    width: 100%;
+    min-height: 2rem;
+    border-radius: 0.25rem;
+    padding: 0.5rem;
+}
+
+.button_danger {
+    background-color: #459DF5;
+    color: #296029;
+}
+
+.button_transparent {
+    background-color: transparent;
+}
+
+.house__window_open {
+    animation: openWindow 3s linear infinite;
 }
