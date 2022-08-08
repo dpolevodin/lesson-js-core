@@ -6,6 +6,7 @@
 }
 
 body {
+    display: flex;
     padding: 4rem;
     background-color: darkgray;
 }
