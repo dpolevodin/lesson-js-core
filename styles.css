@@ -1,42 +1,118 @@
 :root {
-    --main-background-color: #459DF5;
-    --secondary-background-color: #88b288;
+    --background-color-white: #FFFFFF;
+    --background-color-day-light-blue: #BAD8F5;
+    --background-color-blue: #459DF5;
+    --background-color-light-blue: #85b7ee;
 }
 
-.wrapper {
-    background-color: gray;
+body {
+    padding: 4rem;
+    background-color: darkgray;
 }
 
-.house {
-    width: 20rem;
-    height: 20rem;
+.checkbox-wrapper {
+    display: flex;
+    padding: 2rem;
+    gap: 2rem;
     border-radius: 2rem;
+    border: 0.125rem dashed #7758d3;
 }
 
-.button_primary {
-    background-color: var(--main-background-color);
+.checkbox {
+    display: flex;
+    position: relative;
 }
 
-.house_red {
-    background-color: var(--secondary-background-color);
+.checkbox__area {
+    display: flex;
+    appearance: none;
+    width: 4rem;
+    height: 4rem;
+    background-color: var(--background-color-white);
+    border: 0.25rem solid var(--background-color-day-light-blue);
+    border-radius: 0.5rem;
+    box-sizing: border-box;
+    /*outline: 0.25rem solid var(--background-color-light-blue);*/
 }
 
-.button {
-    width: 100%;
-    min-height: 2rem;
-    border-radius: 0.25rem;
-    padding: 0.5rem;
+.checkbox__area:active {
+    background-color: var(--background-color-day-light-blue);
 }
 
-.button_danger {
-    background-color: #459DF5;
-    color: #296029;
+.checkbox__area:checked {
+    background-color: var(--background-color-blue);
+    border-color: var(--background-color-blue);
 }
 
-.button_transparent {
-    background-color: transparent;
+.checkbox__area:checked + .checkbox__icon {
+    opacity: 1;
 }
 
-.house__window_open {
-    animation: openWindow 3s linear infinite;
+.checkbox__icon {
+    position: absolute;
+    opacity: 0;
+    left: 0;
+    top: 0;
+    width: 4rem;
+    fill: var(--background-color-white);
+    transition: opacity 0.25s ease-in;
 }
+
+.sprite {
+    display: block;
+}
+
+/*#main-container {*/
+/*    background-color: green;*/
+/*}*/
+
+/*.container {*/
+/*    position: relative;*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    !*width: 20rem;*!*/
+/*    !*height: 20rem;*!*/
+/*    !*background-color: red;*!*/
+/*    margin: 0 0 10rem 0;*/
+/*}*/
+
+/*.container:last-child {*/
+/*    border: 0.5rem solid #620b0b;*/
+/*}*/
+
+/*.input-container {*/
+/*    !*display: flex;*!*/
+/*    width: 8rem;*/
+/*    height: 4rem;*/
+/*    margin-bottom: 1rem;*/
+/*    !*outline: 0.5rem solid rgba(98, 11, 11, 0.47);*!*/
+/*    background-color: darkgreen;*/
+/*    !*box-sizing: border-box;*!*/
+/*}*/
+
+/*.input-container:nth-child(2n + 1) {*/
+/*    background-color: red;*/
+/*    !*outline: 0.5rem solid rgba(98, 11, 11, 0.47);*!*/
+/*    !*border: 0.5rem solid rgba(98, 11, 11, 0.47);*!*/
+/*    !*box-sizing: border-box;*!*/
+/*}*/
+
+/*.input-container:nth-child(3) {*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
+/*    position: absolute;*/
+/*    background-color: deeppink;*/
+/*    width: 4rem;*/
+/*    height: 4rem;*/
+/*    border-radius: 50%;*/
+/*    left: 6rem;*/
+/*    bottom: 2.5rem;*/
+/*}*/
+
+/*.float-wrapper_logo {*/
+/*    float: left;*/
+/*    width: 4rem;*/
+/*    height: 4rem;*/
+/*    background-color: #88b288;*/
+/*}*/
