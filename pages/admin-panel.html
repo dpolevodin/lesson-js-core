@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Основы CSS</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<header class="header">
+    <div class="menu">
+        <ul class="navigation">
+            <li class="navigation__item">О проекте</li>
+            <li class="navigation__item">Галерея</li>
+            <li class="navigation__item">Ученики</li>
+            <li class="navigation__item navigation__item_last">Преподаватели
+                <ul class="navigation__modal navigation__modal_hidden">
+                    <li class="navigation__modal-item">Что-то еще</li>
+                    <li class="navigation__modal-item">и другое</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <button class="button">Открыть модальное окно</button>
+</header>
+
+<div class="modal modal_hidden">
+    <div class="modal__card">
+        <div class="modal__wrapper">
+            <h2 class="modal__header">Заголовок</h2>
+            <button class="modal__button">X</button>
+        </div>
+        <div class="modal__content">Какой-то важный текст</div>
+    </div>
+</div>
+<script src="./script.js"></script>
+</body>
+</html>
