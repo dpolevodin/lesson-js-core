@@ -1,5 +1,11 @@
-:root {
+.main {
     --background-black: #000000;
+    --background-white: #FFFFFF;
+}
+
+.dark {
+    --background-black: #f1ecec;
+    --background-white: #000000;;
 }
 
 body {
@@ -7,6 +13,31 @@ body {
     height: 100vh;
     margin: 0;
     padding: 0;
+}
+
+.icon2 {
+    width: 4rem;
+    height: 4rem;
+}
+
+.icon2_sprite-example {
+    background-image: url('icons/sprites.png');
+}
+
+
+.icon2_sprite-example-phone {
+    background-position-x: 0;
+    background-position-y: 0;
+}
+
+.icon2_sprite-example-arrow {
+    background-position-x: 4rem;
+    background-position-y: 0;
+}
+
+.icon2_sprite-example-message {
+    background-position-x: 9rem;
+    background-position-y: 0;
 }
 
 .header {
