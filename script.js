@@ -1,15 +1,23 @@
-const button = document.querySelector('.button')
+// const button = document.querySelector('.button')
+//
+// button.addEventListener('click', () => {
+//     document
+//         .querySelector('.modal')
+//         .setAttribute('class', 'modal')
+// })
+//
+// const closeButton = document.querySelector('.modal__button')
+//
+// closeButton.addEventListener('click', () => {
+//     document
+//         .querySelector('.modal')
+//         .setAttribute('class', 'modal modal_hidden')
+// })
 
-button.addEventListener('click', () => {
-    document
-        .querySelector('.modal')
-        .setAttribute('class', 'modal')
-})
+const loader = document.querySelector('.loader')
 
-const closeButton = document.querySelector('.modal__button')
+const changeLoaderVisibility = (isVisible) =>
+    loader.setAttribute('class', isVisible ? 'loader loader_visible' : 'loader')
 
-closeButton.addEventListener('click', () => {
-    document
-        .querySelector('.modal')
-        .setAttribute('class', 'modal modal_hidden')
-})
+setTimeout(() => changeLoaderVisibility(true), 0)
+setTimeout(() => changeLoaderVisibility(false), 3000)

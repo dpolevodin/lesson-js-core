@@ -1,3 +1,9 @@
+:root {
+    --button-width: 6rem;
+    --button-height: 6rem;
+    --color-blue: #459DF5;
+}
+
 body {
     width: 100vw;
     height: 100vh;
@@ -13,17 +19,140 @@ body {
     box-sizing: border-box;
 }
 
+.icon {
+    width: 4rem;
+    height: 4rem;
+    margin: 0 0 4rem 4rem;
+    /*border: 1px solid #000;*/
+}
+
+.icon_png-example {
+    /*background-image: url('images/icons8-png-50.png');*/
+    background-image: url('images/bin.svg');
+}
+
+/*.icon_png-example_message {*/
+/*    background-position-x: 9rem;*/
+/*}*/
+
+/*.icon_png-example_arrow {*/
+/*    background-position-x: 4rem;*/
+/*}*/
+
+/*.icon_png-example_vehicle {*/
+/*    background-position-y: -18rem;*/
+/*}*/
+
+.loader-wrapper {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    padding: 2rem;
+    color: var(--color-blue);
+    font-size: 2rem;
+}
+
+.loader {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.loader_visible {
+    display: flex;
+}
+
+.loader__icon_rotated {
+    animation: icon-rotation 1s linear infinite;
+}
+
+@keyframes icon-rotation {
+    from {
+        transform: rotate(0deg)
+    }
+    to {
+        transform: rotate(360deg)
+    }
+}
+
+.loader__icon {
+    width: 2rem;
+    height: 2rem;
+    stroke: var(--color-blue)
+}
+
+
+
+
+
+
+
+
 .menu {
     display: flex;
     width: 100%;
     padding: 1rem;
     background-color: darkgray;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
 }
 
 .button {
-    width: 6rem;
+    width: var(--button-width);
+    height: var(--button-height);
+    transition: transform 0.4s ease-in-out;
 }
+
+.section {
+    color: var(--color-secondary);
+}
+
+/*.button:hover {*/
+/*    width: calc(var(--button-width) + 2rem);*/
+/*    height: calc(var(--button-height) + 2rem);*/
+/*}*/
+
+.button_moving {
+    /*animation: button-move 4s ease-in-out infinite;*/
+}
+
+@keyframes button-move {
+    0% {
+        transform: rotate(0deg);
+    }
+    25% {
+        width: calc(var(--button-width) + 10rem);
+        height: calc(var(--button-height) + 10rem);
+    }
+    50% {
+        transform: rotate(360deg);
+        margin-left: 40rem;
+        width: var(--button-width);
+        height: var(--button-height);
+    }
+    75% {
+        width: calc(var(--button-width) + 10rem);
+        height: calc(var(--button-height) + 10rem);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes button-move {
+    0% {
+    }
+    25% {
+    }
+    50% {
+        margin-left: 40rem;
+    }
+    75% {
+    }
+    100% {
+    }
+}
+
 
 .navigation {
     position: relative;
