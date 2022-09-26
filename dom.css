@@ -28,6 +28,7 @@ body {
 .card__header {
     font-size: 2rem;
     font-weight: bold;
+    font-family: 'Play', sans-serif;
 }
 
 .card__area {
