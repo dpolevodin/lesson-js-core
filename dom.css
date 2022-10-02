@@ -1,3 +1,7 @@
+:root {
+    --color: #b01717;
+}
+
 body {
     display: flex;
     gap: 4rem;

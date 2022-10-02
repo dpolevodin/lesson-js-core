@@ -1,6 +1,9 @@
 const cards = document.querySelectorAll('.card')
 const cardsButtons = document.querySelectorAll('.card__button')
 
+// console.log(cards)
+// console.log(cardsButtons)
+
 cards.forEach(card => card.addEventListener('click', () => {
     if (card.classList.contains('card_active')) {
         card.setAttribute('class', 'card')
@@ -10,7 +13,7 @@ cards.forEach(card => card.addEventListener('click', () => {
         card.setAttribute('class', 'card card_active')
         console.log('выбрана карточка')
     }
-    }, false)
+    }, {capture: true})
 )
 
 cardsButtons.forEach(card => card.addEventListener('click', (event) => {
@@ -21,6 +24,6 @@ if (card.classList.contains('card__button_danger')) {
 else {
     event.stopPropagation();
     console.log('купить товар')
-}}))
+}}, {capture: true}))
 
 

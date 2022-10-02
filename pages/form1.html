@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel</title>
+</head>
+<body>
+<form class="form" id="mainForm">
+    <input type="text" name="firstName" class="form__input"/>
+    <input type="text" name="lastName" id="lastField" class="form__input form__input_secondary"/>
+</form>
+<script>
+    console.log(document.getElementById('lastField'), '1')
+    console.log(document.querySelector('.form__input_secondary'), '2')
+    console.log(document.getElementsByName('lastName')[0], '3')
+    console.log(document.getElementsByTagName('input')[1], '4')
+    console.log(document.getElementsByClassName('form__input_secondary')[0], '5')
+    console.log(lastField, '* 6')
+</script>
+</body>
+</html>
+
+
