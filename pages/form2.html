@@ -35,13 +35,17 @@
     </style>
 </head>
 <body>
-<form class="form" name="mainForm" onsubmit="alert('Форма отправлена!')">
+
+<form class="form" name="mainForm" onubmit="alert('Форма отправлена!')" >
+
     <h2 class="form__title">ПОЛЬЗОВАТЕЛЬ</h2>
+
     <label class="form__label">
         Имя
         <input type="text" name="firstName" class="form__input" />
         <span id="result"></span>
     </label>
+
     <label class="form__label">
         Фамилия
         <input type="text" name="lastName" id="lastField" class="form__input" />
@@ -51,21 +55,29 @@
         <input type="radio" name="gender" class="form__input" value="male" checked/>
         Мужской
     </label>
+
     <label class="form__label form__label_inline">
-        <input type="radio" name="gender" class="form__input" value="female"/>
+        <input type="radio" name="gender" class="form__input" value="female" />
         Женский
     </label>
-    <label for="petSelect">Домашнее животное:</label>
-    <select name="pets" id="petSelect">
-        <option value="">--Выберите животное--</option>
-        <option value="dog">Собака</option>
-        <option value="cat">Кошка</option>
-        <option value="hamster">Хомяк</option>
-        <option value="parrot">Паук</option>
-        <option value="goldfish">Золотая рыбка</option>
-    </select>
+    <input type="checkbox" name="isAdmin" />
+    <input type="checkbox" name="isStudent" />
+
+    <label>
+        Домашнее животное:
+        <select name="pets">
+            <option value="">--Выберите животное--</option>
+            <option value="dog">Собака</option>
+            <option value="cat">Кошка</option>
+            <option value="hamster">Хомяк</option>
+            <option value="parrot">Паук</option>
+            <option value="goldfish">Золотая рыбка</option>
+        </select>
+    </label>
+
     <button type="submit" name="formButton">Отправить</button>
 </form>
+
 <form class="form" name="secondaryForm">
     <h2 class="form__title">КОНТАКТЫ</h2>
     <label class="form__label">
@@ -74,7 +86,7 @@
             type="text"
             name="address"
             class="form__input"
-            onchange="alert(`Введенный адрес: ${this.value}`)"
+            onchange="alert(`Еще раз проверьте введенный адрес: ${this.value}`)"
         />
     </label>
     <label class="form__label">
@@ -83,52 +95,158 @@
     </label>
     <button type="submit" tabindex="0">Отправить</button>
 </form>
+
 <script>
-    const mainForm = document.forms.mainForm;
-    const genderRadio = mainForm.elements['gender'][0]
-    const firstInput = mainForm.firstName
+    const forms = document.forms
+    // console.log(forms, 'forms')
+
+    const newForms = [...forms]
+    // console.log(Array.isArray(newForms), 'isArray')
+
+    // const mainForm = document.forms[0]
+    // console.log(mainForm, 'mainForm')
+
+    const mainForm = document.forms.mainForm
+    console.log(mainForm, 'mainForm')
+
+    const firstNameInput = mainForm.firstName
     const lastNameInput = mainForm.lastName
-    let petSelect = mainForm.pets
-    console.log(mainForm.elements['gender'], 'mainForm.elements gender')
-    console.log(genderRadio.form, 'genderRadio')
-    console.log(mainForm.lastName.value, 'input value')
-    console.log(mainForm.gender.value, 'gender value')
-    console.log(petSelect, 'petSelect')
-    console.log(firstInput, 'firstInput')
-    mainForm.lastName.value = 'Сидоров'
+    const genderRadio = mainForm.gender
 
-    // TODO: Пример работы с select
-    // petSelect.options[2].selected = true;
-    // petSelect.selectedIndex = 2;
-    // petSelect.value = 'hamster';
 
-    firstInput.value = 'Иван'
-    firstInput.onblur = (event) => {
-        if (!event.target.value) alert('Заполните имя')
-    }
-    // firstInput.onfocus = () => firstInput.value = "";
-    // lastNameInput.focus()
+    const firstNameInputValue = firstNameInput.value
+    // console.log(firstNameInputValue)
 
-    mainForm.addEventListener("focus", () => mainForm.classList.add('focused'), true);
-    mainForm.addEventListener("blur", () => mainForm.classList.remove('focused'), true);
+    const lastNameInputValue = lastNameInput.value
+    // console.log(lastNameInputValue)
 
-    firstInput.oninput = () => result.innerHTML = firstInput.value;
+    const anotherFirstNameInput = document.forms.mainForm.firstName.disabled
+    // console.log(anotherFirstNameInput, 'anotherFirstNameInput')
 
-    const formButton = mainForm.formButton
-    formButton.addEventListener('click', (event) => {
-        event.preventDefault(); // Чтобы форма не отправлялась
-        const firstName = mainForm.firstName.value
-        const lastName = mainForm.lastName.value
-        const gender = mainForm.gender.value
+    const anotherGenderRadios = document.forms[0].gender.value
+    // console.log(anotherGenderRadios)
+
+    document.forms.mainForm.firstName.value = 'Иван'
+    document.forms.mainForm.lastName.value = 'Сидоров'
+    document.forms.mainForm.isAdmin.checked = true
+    document.forms.mainForm.isStudent.disabled = true
+
+    const formSelect = document.forms.mainForm.pets
+    console.log(formSelect)
+    // document.forms.mainForm.pets.options[2].selected = true
+    // document.forms.mainForm.pets.selectedIndex = 2
+    document.forms.mainForm.pets.value = 'goldfish'
+
+
+    // firstNameInput.onfocus = () => firstNameInput.value = ''
+    // firstNameInput.onblur = (event) => {
+    //     if (event.target.value === '') {
+    //         alert('Заполните имя!')
+    //     }
+    // }
+
+    document.forms.mainForm.firstName.focus()
+
+    mainForm.addEventListener('focus', () => mainForm.classList.add('focused'), {capture: true})
+    mainForm.addEventListener('blur', () => mainForm.classList.remove('focused'), {capture: true})
+
+    document.forms.mainForm.firstName.oninput = () => result.innerHTML = firstNameInput.value
+
+    document.forms.mainForm.addEventListener('submit', (event) => {
+        event.preventDefault()
+
+        const firstName = firstNameInput.value
+        const lastName = lastNameInput.value
+        const gender = genderRadio.value
+        const isAdmin = document.forms.mainForm.isAdmin.checked
 
         const formData = {
             firstName,
             lastName,
-            gender
+            gender,
+            isAdmin
         }
 
-        console.log(formData)
+        console.log(formData, 'formData')
+        axios.post('localhost', formData)
     })
+
+    // console.log(document.forms[0].isAdmin.checked)
+    // console.log(document.forms[0].isStudent.checked)
+
+    // const mainFormObject = {
+    //     firstName: <input name="firstName">,
+    //     lastName: <input name="lastName">,
+    //     gender: [<input name="gender">, <input name="gender">]
+    // }
+
+    // const newGenderRadio = [...genderRadio] - для получения массива из коллекции
+
+    // console.log(firstNameInput)
+    // console.log(lastNameInput)
+    // console.log(genderRadio)
+    // console.log(genderRadio[0].form, 'genderRadio')
+    //
+    // const anotherFirstName = document.getElementsByName('firstName')[0]
+    // console.log(anotherFirstName, 'anotherFirstName')
+    // const anotherFirstNameParentForm = anotherFirstName.form
+    // console.log(anotherFirstNameParentForm, 'anotherFirstNameParentForm')
+
+
+
+
+
+
+
+
+
+
+
+    // const mainForm = document.forms.mainForm;
+    // const genderRadio = mainForm.elements['gender'][0]
+    // const firstInput = mainForm.firstName
+    // const lastNameInput = mainForm.lastName
+    // let petSelect = mainForm.pets
+    // console.log(mainForm.elements['gender'], 'mainForm.elements gender')
+    // console.log(genderRadio.form, 'genderRadio')
+    // console.log(mainForm.lastName.value, 'input value')
+    // console.log(mainForm.gender.value, 'gender value')
+    // console.log(petSelect, 'petSelect')
+    // console.log(firstInput, 'firstInput')
+    // mainForm.lastName.value = 'Сидоров'
+    //
+    // // TODO: Пример работы с select
+    // // petSelect.options[2].selected = true;
+    // // petSelect.selectedIndex = 2;
+    // // petSelect.value = 'hamster';
+    //
+    // firstInput.value = 'Иван'
+    // firstInput.onblur = (event) => {
+    //     if (!event.target.value) alert('Заполните имя')
+    // }
+    // // firstInput.onfocus = () => firstInput.value = "";
+    // // lastNameInput.focus()
+    //
+    // mainForm.addEventListener("focus", () => mainForm.classList.add('focused'), true);
+    // mainForm.addEventListener("blur", () => mainForm.classList.remove('focused'), true);
+    //
+    // firstInput.oninput = () => result.innerHTML = firstInput.value;
+    //
+    // const formButton = mainForm.formButton
+    // formButton.addEventListener('click', (event) => {
+    //     event.preventDefault(); // Чтобы форма не отправлялась
+    //     const firstName = mainForm.firstName.value
+    //     const lastName = mainForm.lastName.value
+    //     const gender = mainForm.gender.value
+    //
+    //     const formData = {
+    //         firstName,
+    //         lastName,
+    //         gender
+    //     }
+    //
+    //     console.log(formData)
+    // })
 
 </script>
 </body>
