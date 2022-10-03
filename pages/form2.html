@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel</title>
+    <style >
+        body {
+            padding: 2rem;
+        }
+        .form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            width: 16rem;
+            padding: 1rem;
+            margin-bottom: 2rem;
+            border: 2px solid #459DF5;
+            border-radius: 1rem;
+        }
+        .form__label {
+            display: grid;
+            gap: 0.5rem;
+            padding: 0.25rem;
+        }
+
+        .form__label_inline {
+            display: flex;
+        }
+
+        .focused {
+            border: 2px solid #f54574;
+            background-color: rgba(245, 69, 116, 0.07);
+        }
+    </style>
+</head>
+<body>
+<form class="form" name="mainForm" onsubmit="alert('Форма отправлена!')">
+    <h2 class="form__title">ПОЛЬЗОВАТЕЛЬ</h2>
+    <label class="form__label">
+        Имя
+        <input type="text" name="firstName" class="form__input" />
+        <span id="result"></span>
+    </label>
+    <label class="form__label">
+        Фамилия
+        <input type="text" name="lastName" id="lastField" class="form__input" />
+    </label>
+
+    <label class="form__label form__label_inline">
+        <input type="radio" name="gender" class="form__input" value="male" checked/>
+        Мужской
+    </label>
+    <label class="form__label form__label_inline">
+        <input type="radio" name="gender" class="form__input" value="female"/>
+        Женский
+    </label>
+    <label for="petSelect">Домашнее животное:</label>
+    <select name="pets" id="petSelect">
+        <option value="">--Выберите животное--</option>
+        <option value="dog">Собака</option>
+        <option value="cat">Кошка</option>
+        <option value="hamster">Хомяк</option>
+        <option value="parrot">Паук</option>
+        <option value="goldfish">Золотая рыбка</option>
+    </select>
+    <button type="submit" name="formButton">Отправить</button>
+</form>
+<form class="form" name="secondaryForm">
+    <h2 class="form__title">КОНТАКТЫ</h2>
+    <label class="form__label">
+        Адрес
+        <input
+            type="text"
+            name="address"
+            class="form__input"
+            onchange="alert(`Введенный адрес: ${this.value}`)"
+        />
+    </label>
+    <label class="form__label">
+        Телефон
+        <input type="text" name="phone" class="form__input"/>
+    </label>
+    <button type="submit" tabindex="0">Отправить</button>
+</form>
+<script>
+    const mainForm = document.forms.mainForm;
+    const genderRadio = mainForm.elements['gender'][0]
+    const firstInput = mainForm.firstName
+    const lastNameInput = mainForm.lastName
+    let petSelect = mainForm.pets
+    console.log(mainForm.elements['gender'], 'mainForm.elements gender')
+    console.log(genderRadio.form, 'genderRadio')
+    console.log(mainForm.lastName.value, 'input value')
+    console.log(mainForm.gender.value, 'gender value')
+    console.log(petSelect, 'petSelect')
+    console.log(firstInput, 'firstInput')
+    mainForm.lastName.value = 'Сидоров'
+
+    // TODO: Пример работы с select
+    // petSelect.options[2].selected = true;
+    // petSelect.selectedIndex = 2;
+    // petSelect.value = 'hamster';
+
+    firstInput.value = 'Иван'
+    firstInput.onblur = (event) => {
+        if (!event.target.value) alert('Заполните имя')
+    }
+    // firstInput.onfocus = () => firstInput.value = "";
+    // lastNameInput.focus()
+
+    mainForm.addEventListener("focus", () => mainForm.classList.add('focused'), true);
+    mainForm.addEventListener("blur", () => mainForm.classList.remove('focused'), true);
+
+    firstInput.oninput = () => result.innerHTML = firstInput.value;
+
+    const formButton = mainForm.formButton
+    formButton.addEventListener('click', (event) => {
+        event.preventDefault(); // Чтобы форма не отправлялась
+        const firstName = mainForm.firstName.value
+        const lastName = mainForm.lastName.value
+        const gender = mainForm.gender.value
+
+        const formData = {
+            firstName,
+            lastName,
+            gender
+        }
+
+        console.log(formData)
+    })
+
+</script>
+</body>
+</html>
+
+
